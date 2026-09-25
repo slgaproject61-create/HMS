@@ -91,7 +91,11 @@ const Login = ({ initialTab = "customer-login" }) => {
       }, 500);
     } catch (err) {
       setLoading(false);
-      setError(err.response?.data?.message || "Invalid credentials. Please check your email and password.");
+      if (!err.response) {
+        setError("Unable to connect to server. Please ensure the backend is running and VITE_API_URL is set in Vercel.");
+      } else {
+        setError(err.response.data?.message || "Invalid credentials. Please check your email and password.");
+      }
     }
   };
 
@@ -139,7 +143,11 @@ const Login = ({ initialTab = "customer-login" }) => {
       }, 700);
     } catch (err) {
       setLoading(false);
-      setError(err.response?.data?.message || "Registration failed. An account with this email may already exist.");
+      if (!err.response) {
+        setError("Unable to connect to server. Please ensure the backend is running and VITE_API_URL is set in Vercel.");
+      } else {
+        setError(err.response.data?.message || "Registration failed. Please try again.");
+      }
     }
   };
 

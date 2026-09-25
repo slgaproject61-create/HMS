@@ -70,7 +70,11 @@ const StaffLogin = () => {
       navigate("/dashboard");
     } catch (err) {
       setLoading(false);
-      setError(err.response?.data?.message || "Authentication failed. Invalid staff credentials.");
+      if (!err.response) {
+        setError("Unable to connect to server. Please ensure the backend is running and VITE_API_URL is set in Vercel.");
+      } else {
+        setError(err.response.data?.message || "Authentication failed. Invalid staff credentials.");
+      }
     }
   };
 
