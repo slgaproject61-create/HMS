@@ -1,0 +1,33 @@
+{
+  "name": "luxurystay-hms",
+  "version": "1.0.0",
+  "description": "LuxuryStay Hotel Management System",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "node backend/server.js",
+    "client": "npm run dev --prefix frontend",
+    "build:client": "npm run build --prefix frontend",
+    "dev": "npm run server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hotel",
+    "management",
+    "hms",
+    "mern"
+  ],
+  "author": "LuxuryStay",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.10.1"
+  },
+  "devDependencies": {
+    "docx": "^9.7.1"
+  }
+}
