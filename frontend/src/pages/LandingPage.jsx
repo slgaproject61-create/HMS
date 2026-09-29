@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import LandingNavbar from "../components/LandingNavbar";
 import LandingFooter from "../components/LandingFooter";
+import api from "../api";
 import {
   MdHotel,
   MdCalendarToday,
@@ -111,6 +112,23 @@ const LandingPage = () => {
   );
   const [guests, setGuests] = useState("2");
   const [dateError, setDateError] = useState("");
+  const [liveRooms, setLiveRooms] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchRooms = async () => {
+      try {
+        const { data } = await api.get("/rooms");
+        if (isMounted && data.data) {
+          setLiveRooms(data.data);
+        }
+      } catch (err) {
+        console.warn("Landing live rooms fetch:", err.message);
+      }
+    };
+    fetchRooms();
+    return () => { isMounted = false; };
+  }, []);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -249,7 +267,21 @@ const LandingPage = () => {
         </div>
 
         <div className="preview-suites-grid">
-          {suitePreviews.map((suite) => (
+          {(liveRooms.length > 0
+            ? liveRooms.filter((r) => r.status !== "Out of Service").slice(0, 3).map((r) => ({
+                id: r._id,
+                name: r.name || `${r.type} Suite #${r.number}`,
+                tag: r.tag || (r.type === "Presidential Suite" ? "Most Exclusive Sanctuary" : r.type === "Penthouse" ? "Pinnacle of Global Luxury" : "Luxury Sanctuary"),
+                price: r.pricePerNight,
+                size: r.size || (r.type === "Penthouse" ? "2,200 sq ft" : r.type === "Presidential Suite" ? "1,450 sq ft" : "850 sq ft"),
+                guests: r.capacity || 2,
+                bed: r.bed || "King Imperial Bed",
+                view: r.view || "Panoramic Ocean & Skyline",
+                image: r.images && r.images.length > 0 ? r.images[0] : "/hotel-lobby.jpg",
+                desc: r.description || "Indulge in a masterfully appointed architectural sanctuary, featuring bespoke finishes, panoramic vistas, and dedicated butler service.",
+              }))
+            : suitePreviews
+          ).map((suite) => (
             <div key={suite.id} className="preview-suite-card">
               <div className="card-media-luxe" style={{ backgroundImage: `url(${suite.image})` }}>
                 <span className="card-luxe-tag">{suite.tag}</span>
@@ -282,7 +314,7 @@ const LandingPage = () => {
 
         <div className="section-explore-center">
           <Link to="/suites" className="btn-explore-dedicated">
-            Explore All 6 Suites & Villas with Full Floorplans →
+            Explore All Available Suites & Villas →
           </Link>
         </div>
       </section>

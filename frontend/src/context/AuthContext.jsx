@@ -72,7 +72,7 @@ export const AuthProvider = ({ children }) => {
     );
   };
 
-  const isCustomer = user?.type === "customer";
+  const isCustomer = user?.type === "customer" || user?.role === "Customer";
   const isStaff = user?.type === "staff" || (!user?.type && user?.role && user.role !== "Customer");
   const isLoggedIn = !!user;
 

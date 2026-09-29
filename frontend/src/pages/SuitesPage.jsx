@@ -20,152 +20,15 @@ import {
   MdLock,
 } from "react-icons/md";
 
-const allSuitesData = [
-  {
-    id: "suite-presidential",
-    name: "Presidential Sky Suite",
-    category: "Presidential Suite",
-    tag: "Most Exclusive Sanctuary",
-    price: 850,
-    size: "1,450 sq ft",
-    guests: 2,
-    bed: "King Imperial Bed",
-    view: "360° Skyline & Ocean Panoramas",
-    floor: "45th Floor Penthouse Level",
-    image: "/hotel-lobby.jpg",
-    description: "Our signature penthouse sanctuary featuring soaring floor-to-ceiling windows, a private outdoor heated jacuzzi terrace, and around-the-clock dedicated British-guild butler service.",
-    features: [
-      "Private Heated Outdoor Jacuzzi Terrace",
-      "24/7 Dedicated Butler & Concierge",
-      "Private High-Speed Elevator Access",
-      "Complimentary Vintage Dom Pérignon on Arrival",
-      "Carrara Marble Bathroom with Infinity Tub",
-      "Custom Italian Frette 1,000-Thread-Count Linens",
-    ],
-    inclusions: ["Chauffeur Rolls-Royce Transfer", "Daily Champagne Breakfast in Suite", "Daily 90-min Spa Treatment for Two", "Reserved Cabana at Infinity Pool"],
-  },
-  {
-    id: "suite-penthouse",
-    name: "Royal Penthouse Villa",
-    category: "Penthouse",
-    tag: "Pinnacle of Global Luxury",
-    price: 1200,
-    size: "2,200 sq ft",
-    guests: 4,
-    bed: "2 California King Beds",
-    view: "Direct Unobstructed Oceanfront",
-    floor: "Top Floor Private Compound",
-    image: "/hotel-exterior.jpg",
-    description: "The crown jewel of LuxuryStay. Includes an exclusive rooftop infinity plunge pool, full private chef's marble kitchen, grand Steinway piano, and private sommelier cellar service.",
-    features: [
-      "Private Rooftop Infinity Plunge Pool",
-      "Dedicated Private Executive Chef",
-      "In-Suite Wine & Cigar Temperature Cellar",
-      "Steinway & Sons Grand Piano",
-      "Master Spa Bathroom with Steam Shower",
-      "Dual Walk-in Dressing Suites",
-    ],
-    inclusions: ["Helipad / Airport Greeting", "Unlimited In-Suite Fine Dining", "Private Sunset Yacht Charter Included", "Dedicated 24/7 Concierge"],
-  },
-  {
-    id: "suite-ocean",
-    name: "Executive Oceanfront Suite",
-    category: "Executive Suite",
-    tag: "Guest Favorite & Romantic Haven",
-    price: 550,
-    size: "950 sq ft",
-    guests: 2,
-    bed: "Plush King Bed",
-    view: "Direct Golden Sunset View",
-    floor: "Floors 20–35",
-    image: "/hotel-exterior.jpg",
-    description: "Spacious contemporary seaside elegance with an expansive private sun lounger balcony, deep freestanding marble soaking tub, and bespoke in-room dining menus.",
-    features: [
-      "Expansive Sunset Balcony with Sun Loungers",
-      "Deep Freestanding Marble Soaking Tub",
-      "Complimentary Daily Afternoon High Tea",
-      "Bang & Olufsen Acoustic Sound Architecture",
-      "Walk-in Rainforest Shower & Dyson Amenities",
-      "Nespresso Artisanal Bar & Rare Tea Selection",
-    ],
-    inclusions: ["Complimentary Mini-Bar Refreshed Daily", "Evening Turndown Petit Fours", "Fast-Track Airport Security Assistance", "Priority Dining Reservations"],
-  },
-  {
-    id: "suite-garden",
-    name: "Deluxe Garden Sanctuary Villa",
-    category: "Deluxe",
-    tag: "Tranquil Wellness Retreat",
-    price: 420,
-    size: "1,100 sq ft",
-    guests: 3,
-    bed: "1 King Bed + 1 Daybed",
-    view: "Private Botanical Zen Garden",
-    floor: "Ground Level Garden Wing",
-    image: "/hotel-lobby.jpg",
-    description: "Nestled within our private historical botanical grounds. Features an outdoor rainfall shower, private teak sun lounger deck, and holistic wellness amenities.",
-    features: [
-      "Private Zen Garden & Teak Sun Deck",
-      "Open-Air Slate Rainforest Shower",
-      "Organic Herbal Tea Bar & Elixirs",
-      "In-Villa Aromatherapy & Pillow Menu",
-      "Custom Yoga Mats & Meditation Benches",
-      "Direct Private Path to Lotus Spa",
-    ],
-    inclusions: ["Daily Morning Yoga & Meditation Access", "Complimentary Hydrotherapy Pass", "Botanical Welcome Gifts", "Organic Fruit Basket Daily"],
-  },
-  {
-    id: "suite-imperial",
-    name: "Grand Imperial Heritage Suite",
-    category: "Executive Suite",
-    tag: "Aristocratic Classic",
-    price: 680,
-    size: "1,300 sq ft",
-    guests: 2,
-    bed: "King Handcrafted Bed",
-    view: "Grand Plaza & Historical Fountains",
-    floor: "Historic 1928 Main Wing",
-    image: "/hotel-exterior.jpg",
-    description: "Old-world aristocratic European charm meets 21st-century opulence with antique crystal chandeliers, Italian silk wall drapery, and a private sommelier wine tasting session.",
-    features: [
-      "Authentic 1928 European Architecture",
-      "Italian Silk Drapery & Antique Fireplace",
-      "Private Sommelier In-Suite Tasting",
-      "Onyx & Carrara Marble Master Bathroom",
-      "Antique Writing Desk & Library Nook",
-      "Smart Room Climate & Ambient Lighting",
-    ],
-    inclusions: ["Bottle of Reserve Vintage Champagne", "Heritage Estate History Tour", "Complimentary Pressing Service", "Late Check-Out until 4:00 PM"],
-  },
-  {
-    id: "suite-standard",
-    name: "Signature Standard King Room",
-    category: "Standard",
-    tag: "Refined Modern Elegance",
-    price: 310,
-    size: "680 sq ft",
-    guests: 2,
-    bed: "Ultra-Plush King Bed",
-    view: "Panoramic Island & Marina View",
-    floor: "Floors 8–18",
-    image: "/hotel-lobby.jpg",
-    description: "A serene urban and seaside oasis featuring premium Egyptian cotton linens, a walk-in rain shower, artisanal espresso station, and customized pillow menu.",
-    features: [
-      "Customized 8-Option Pillow Menu",
-      "Artisanal Italian Espresso Bar",
-      "Rainfall Walk-in Shower with Diptyque Toiletries",
-      "Floor-to-Ceiling Soundproof Windows",
-      "Wireless Fast-Charging Stations & Smart Hub",
-      "Plush Velvet Lounge Seating",
-    ],
-    inclusions: ["Welcome Macaron Presentation", "High-Speed Fiber Wi-Fi", "Access to Sky Infinity Pool & Gym", "Nightly Housekeeping Turndown"],
-  },
-];
+import api from "../api";
 
 const SuitesPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, isCustomer, isLoggedIn, addBooking } = useAuth();
 
+  const [dbRooms, setDbRooms] = useState([]);
+  const [loadingRooms, setLoadingRooms] = useState(true);
   const [categoryFilter, setCategoryFilter] = useState("All");
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -189,6 +52,26 @@ const SuitesPage = () => {
   const [bookingSuccess, setBookingSuccess] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [dateWarning, setDateWarning] = useState("");
+
+  // Fetch rooms added from Admin Portal from Backend
+  useEffect(() => {
+    let isMounted = true;
+    const fetchRooms = async () => {
+      try {
+        setLoadingRooms(true);
+        const { data } = await api.get("/rooms");
+        if (isMounted) {
+          setDbRooms(data.data || []);
+        }
+      } catch (err) {
+        console.error("Failed to load rooms from inventory:", err.message);
+      } finally {
+        if (isMounted) setLoadingRooms(false);
+      }
+    };
+    fetchRooms();
+    return () => { isMounted = false; };
+  }, []);
 
   // Resume booking if coming from login
   useEffect(() => {
@@ -214,7 +97,7 @@ const SuitesPage = () => {
     setSelectedRoom(room);
   };
 
-  const handleConfirmReservation = () => {
+  const handleConfirmReservation = async () => {
     if (!selectedRoom || !isLoggedIn) return;
 
     if (new Date(checkIn) >= new Date(checkOut)) {
@@ -227,6 +110,24 @@ const SuitesPage = () => {
     const subtotal = selectedRoom.price * nights;
     const taxes = Math.round(subtotal * 0.12);
     const total = subtotal + taxes;
+
+    try {
+      // Save reservation to backend database
+      await api.post("/reservations", {
+        roomNumber: selectedRoom.roomNumber || selectedRoom.number || "101",
+        guestName: user?.name || "Valued Guest",
+        guestEmail: user?.email || "guest@luxurystay.com",
+        guestPhone: user?.phone || "",
+        checkIn,
+        checkOut,
+        adults: parseInt(guests, 10) || 1,
+        totalPrice: total,
+        source: "Online",
+        notes: specialReq || "Booked online via guest portal",
+      });
+    } catch (apiErr) {
+      console.warn("Reservation API save note:", apiErr.message);
+    }
 
     setTimeout(() => {
       const newBooking = addBooking({
@@ -248,9 +149,45 @@ const SuitesPage = () => {
     }, 600);
   };
 
+  // Convert DB rooms into luxury suite presentation objects
+  const suitesFromDb = dbRooms.map((r) => {
+    const amenitiesList = r.amenities
+      ? r.amenities.split(",").map((s) => s.trim()).filter(Boolean)
+      : ["High-Speed Wi-Fi", "Smart 4K TV", "Carrara Marble Bath", "Dedicated Concierge", "Nespresso Bar"];
+
+    return {
+      id: r._id,
+      roomNumber: r.number,
+      number: r.number,
+      name: r.name || `${r.type} Suite #${r.number}`,
+      category: r.type,
+      tag: r.tag || (r.type === "Presidential Suite" ? "Most Exclusive Sanctuary" : r.type === "Penthouse" ? "Pinnacle of Global Luxury" : `${r.type} Accommodation`),
+      price: r.pricePerNight,
+      size: r.size || (r.type === "Penthouse" ? "2,200 sq ft" : r.type === "Presidential Suite" ? "1,450 sq ft" : "850 sq ft"),
+      guests: r.capacity || 2,
+      bed: r.bed || "King Imperial Bed",
+      view: r.view || (r.floor && Number(r.floor) > 4 ? "Panoramic Ocean & Skyline" : "City & Ocean View"),
+      floor: r.floor ? `Floor ${r.floor}` : "Upper Level",
+      image: r.images && r.images.length > 0 ? r.images[0] : "/hotel-lobby.jpg",
+      images: r.images && r.images.length > 0 ? r.images : ["/hotel-lobby.jpg"],
+      description: r.description || "Indulge in a masterfully appointed architectural haven, featuring panoramic vistas, Italian finishes, and bespoke butler service.",
+      features: amenitiesList,
+      inclusions: [
+        "Complimentary High-Speed Wi-Fi",
+        "Artisanal Coffee & Rare Tea Bar",
+        "24/7 Dedicated Concierge & Turndown",
+        "Access to Sky Pool & Hydrotherapy Suite",
+      ],
+      status: r.status,
+    };
+  });
+
+  // Only display rooms created by admin in inventory (and exclude out of service / maintenance for guest booking)
+  const availableSuites = suitesFromDb.filter((s) => s.status !== "Out of Service");
+
   const filteredSuites = categoryFilter === "All"
-    ? allSuitesData
-    : allSuitesData.filter((s) => s.category.toLowerCase().includes(categoryFilter.toLowerCase()));
+    ? availableSuites
+    : availableSuites.filter((s) => s.category.toLowerCase().includes(categoryFilter.toLowerCase()));
 
   return (
     <div className="page-wrapper white-gold-theme">
@@ -338,65 +275,86 @@ const SuitesPage = () => {
         </div>
 
         {/* Suites Grid */}
-        <div className="suites-full-grid">
-          {filteredSuites.map((suite) => (
-            <article key={suite.id} className="suite-card-luxe">
-              <div className="suite-card-image" style={{ backgroundImage: `url(${suite.image})` }}>
-                <span className="suite-luxe-tag">{suite.tag}</span>
-                <div className="suite-luxe-price">
-                  <span className="amount">${suite.price}</span>
-                  <span className="period">/ night</span>
-                </div>
-              </div>
-
-              <div className="suite-card-content">
-                <div className="suite-quick-meta">
-                  <span><MdSquareFoot /> {suite.size}</span>
-                  <span>•</span>
-                  <span><MdPeople /> Up to {suite.guests} Guests</span>
-                  <span>•</span>
-                  <span><MdKingBed /> {suite.bed}</span>
-                </div>
-
-                <h2 className="suite-name">{suite.name}</h2>
-                <span className="suite-location-sub">{suite.floor} · {suite.view}</span>
-                <p className="suite-desc">{suite.description}</p>
-
-                {/* Key Features */}
-                <div className="suite-features-section">
-                  <h4>Suite Highlights:</h4>
-                  <div className="features-pill-list">
-                    {suite.features.map((f, i) => (
-                      <span key={i} className="feature-pill-item">
-                        <MdCheckCircle className="feat-icon" /> {f}
-                      </span>
-                    ))}
+        {loadingRooms ? (
+          <div style={{ textAlign: "center", padding: "80px 20px" }}>
+            <p style={{ fontFamily: "Cinzel, serif", fontSize: 18, color: "var(--gold)" }}>Loading live suite inventory…</p>
+          </div>
+        ) : filteredSuites.length === 0 ? (
+          <div style={{ textAlign: "center", padding: "70px 20px", background: "rgba(255,255,255,0.02)", borderRadius: 12, border: "1px solid rgba(212,175,55,0.25)", margin: "20px 0" }}>
+            <div style={{ fontSize: 44, color: "var(--gold)", marginBottom: 12 }}>🏨</div>
+            <h3 style={{ fontFamily: "Cinzel, serif", fontSize: 22, color: "#fff", marginBottom: 8 }}>No Suites Available</h3>
+            <p style={{ color: "var(--text-muted)", maxWidth: 520, margin: "0 auto 16px", fontSize: 14 }}>
+              {categoryFilter !== "All"
+                ? `There are currently no suites available in the "${categoryFilter}" category.`
+                : "There are currently no suites in the live inventory. Rooms added by the hotel administration will appear here automatically."}
+            </p>
+            {categoryFilter !== "All" && (
+              <button type="button" className="btn btn-secondary btn-sm" onClick={() => setCategoryFilter("All")}>
+                View All Accommodations
+              </button>
+            )}
+          </div>
+        ) : (
+          <div className="suites-full-grid">
+            {filteredSuites.map((suite) => (
+              <article key={suite.id} className="suite-card-luxe">
+                <div className="suite-card-image" style={{ backgroundImage: `url(${suite.image})` }}>
+                  <span className="suite-luxe-tag">{suite.tag}</span>
+                  <div className="suite-luxe-price">
+                    <span className="amount">${suite.price}</span>
+                    <span className="period">/ night</span>
                   </div>
                 </div>
 
-                {/* Inclusions */}
-                <div className="suite-inclusions-box">
-                  <strong>Complimentary Privileges:</strong>
-                  <ul>
-                    {suite.inclusions.map((inc, i) => (
-                      <li key={i}>{inc}</li>
-                    ))}
-                  </ul>
-                </div>
+                <div className="suite-card-content">
+                  <div className="suite-quick-meta">
+                    <span><MdSquareFoot /> {suite.size}</span>
+                    <span>•</span>
+                    <span><MdPeople /> Up to {suite.guests} Guests</span>
+                    <span>•</span>
+                    <span><MdKingBed /> {suite.bed}</span>
+                  </div>
 
-                <div className="suite-card-actions">
-                  <button
-                    type="button"
-                    className="btn-reserve-suite"
-                    onClick={() => handleBookClick(suite)}
-                  >
-                    Reserve This Suite <MdArrowForward />
-                  </button>
+                  <h2 className="suite-name">{suite.name}</h2>
+                  <span className="suite-location-sub">{suite.floor} · {suite.view}</span>
+                  <p className="suite-desc">{suite.description}</p>
+
+                  {/* Key Features */}
+                  <div className="suite-features-section">
+                    <h4>Suite Highlights:</h4>
+                    <div className="features-pill-list">
+                      {suite.features.map((f, i) => (
+                        <span key={i} className="feature-pill-item">
+                          <MdCheckCircle className="feat-icon" /> {f}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Inclusions */}
+                  <div className="suite-inclusions-box">
+                    <strong>Complimentary Privileges:</strong>
+                    <ul>
+                      {suite.inclusions.map((inc, i) => (
+                        <li key={i}>{inc}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="suite-card-actions">
+                    <button
+                      type="button"
+                      className="btn-reserve-suite"
+                      onClick={() => handleBookClick(suite)}
+                    >
+                      Reserve This Suite <MdArrowForward />
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
+              </article>
+            ))}
+          </div>
+        )}
 
         {/* VIP Inclusions Comparison */}
         <section className="suites-privileges-banner">
