@@ -65,7 +65,7 @@ router.post("/", protect, async (req, res) => {
 router.put("/:id", protect, async (req, res) => {
   try {
     const room = await Room.findByIdAndUpdate(req.params.id, req.body, {
-      new: true, runValidators: true,
+      returnDocument: "after", runValidators: true,
     });
     if (!room) return res.status(404).json({ message: "Room not found" });
     res.json(room);

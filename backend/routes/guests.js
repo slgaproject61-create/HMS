@@ -52,7 +52,7 @@ router.post("/", protect, async (req, res) => {
 router.put("/:id", protect, async (req, res) => {
   try {
     const guest = await Guest.findByIdAndUpdate(req.params.id, req.body, {
-      new: true, runValidators: true,
+      returnDocument: "after", runValidators: true,
     });
     if (!guest) return res.status(404).json({ message: "Guest not found" });
     res.json(guest);

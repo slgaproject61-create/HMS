@@ -45,7 +45,7 @@ router.post("/", protect, async (req, res) => {
 router.put("/:id", protect, async (req, res) => {
   try {
     const service = await Service.findByIdAndUpdate(req.params.id, req.body, {
-      new: true, runValidators: true,
+      returnDocument: "after", runValidators: true,
     });
     if (!service) return res.status(404).json({ message: "Service not found" });
     res.json(service);

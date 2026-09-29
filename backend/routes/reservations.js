@@ -71,7 +71,7 @@ router.put("/:id", protect, async (req, res) => {
     if (!prev) return res.status(404).json({ message: "Reservation not found" });
 
     const updated = await Reservation.findByIdAndUpdate(req.params.id, req.body, {
-      new: true, runValidators: true,
+      returnDocument: "after", runValidators: true,
     });
 
     // Sync room status on check-in / check-out / cancel

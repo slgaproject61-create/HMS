@@ -34,7 +34,7 @@ router.get("/", protect, async (req, res) => {
 // PUT /api/inquiries/:id — Protected: staff update status or notes
 router.put("/:id", protect, async (req, res) => {
   try {
-    const inquiry = await Inquiry.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    const inquiry = await Inquiry.findByIdAndUpdate(req.params.id, req.body, { returnDocument: "after", runValidators: true });
     if (!inquiry) return res.status(404).json({ message: "Inquiry not found" });
     res.json(inquiry);
   } catch (err) {
